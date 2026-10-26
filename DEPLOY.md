@@ -1,6 +1,6 @@
 # GitHub / Cloudflare 公開手順
 
-このZIPは POKER SCOPE v2 の配布版です。Node.js 22以上とnpmを使用します。
+このZIPは POKER SCOPE v3 の配布版です。Node.js 22以上とnpmを使用します。
 ゲーム本体は `dist/` の静的ファイルです。Cloudflare Workersの静的アセット配信で公開します。
 
 ## 1. GitHubに登録する
@@ -39,7 +39,7 @@ Cloudflareの **Workers & Pages** から新しいWorkerを作成し、GitHubリ�
 
 `package-lock.json` によりWranglerのバージョンを固定しています。依存パッケージはCloudflare側でインストールされます。インストールコマンドを指定する画面がある場合は `npm ci` を指定します。
 
-`npm run build` は `dist/` の必須ファイルを確認します。本体は静的ファイルなので、変換・コンパイルは不要です。
+`npm run build` は `package.json` 内のコマンドだけで `dist/` の必須ファイルを確認します。補助スクリプトのアップロードは不要です。本体は静的ファイルなので、変換・コンパイルは不要です。
 
 設定ファイルの `assets.directory` は `./dist` です。Workers方式では出力ディレクトリ欄を別途指定する必要はありません。公開後はCloudflareが表示する `workers.dev` URLを開いてください。以後、接続した本番ブランチへのコミットにより再デプロイされます。
 
@@ -85,4 +85,8 @@ npm run dev
 - 設定：https://developers.cloudflare.com/workers/static-assets/binding/
 - Git連携のビルド設定：https://developers.cloudflare.com/workers/ci-cd/builds/configuration/
 
-作成元：POKER SCOPE v2、ソースコミット `4144d00aa83e710db3a39d38b1faa816c75ab175`。
+作成元：POKER SCOPE v3、ソースコミット `54fad1c28737955a872a6bba265377abd83953e5`。
+
+## 旧版の MODULE_NOT_FOUND エラー
+
+`scripts/check-assets.cjs` が見つからない場合は、リポジトリに補助スクリプトが含まれていません。この修正版の `package.json` に置き換えてコミットし、再ビルドしてください。ゲーム本体は静的ファイルのため、Cloudflareのビルドコマンドを空欄にする方法でも当該エラーを回避できます。デプロイコマンドは `npx wrangler deploy` のままで構いません。どちらの場合も、GitHub上に `dist/index.html` など本体7ファイルが必要です。

@@ -1,6 +1,6 @@
 {
   "name": "poker-scope",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "description": "Japanese poker study trainer with cash/MTT quizzes, spot analysis and equity calculator",
   "engines": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "wrangler dev",
-    "build": "node scripts/check-assets.cjs",
+    "build": "node -e \"const fs=require('node:fs'); for(const f of ['index.html','style.css','icon.svg','app.js','engine.js','study.js','worker.js']) if(!fs.existsSync('dist/'+f)) throw new Error('GitHub upload is missing dist/'+f); console.log('Static assets ready');\"",
     "test": "node --test tests/engine.test.cjs tests/study.test.cjs tests/app.test.cjs",
     "check": "npm run build && node --check dist/engine.js && node --check dist/study.js && node --check dist/app.js && node --check dist/worker.js",
     "deploy": "wrangler deploy",

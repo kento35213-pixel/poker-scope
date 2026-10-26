@@ -1,0 +1,29 @@
+{
+  "version": 3,
+  "seed": 20261026,
+  "note": "直近最大12パターンを避ける標準練習を抽選し、出題前履歴を検査。実戦のGTO行動頻度ではありません。",
+  "modes": [
+    {
+      "mode": "cash",
+      "samples": 10000,
+      "immediateRepeats": 0,
+      "limpHistories": 12,
+      "nonSbLimpHistories": 0,
+      "coldCallHistories": 413,
+      "chainsOf2ColdCallers": 0,
+      "exceptionThemes": 12,
+      "uniqueFamilies": 78
+    },
+    {
+      "mode": "mtt",
+      "samples": 10000,
+      "immediateRepeats": 0,
+      "limpHistories": 16,
+      "nonSbLimpHistories": 0,
+      "coldCallHistories": 709,
+      "chainsOf2ColdCallers": 0,
+      "exceptionThemes": 106,
+      "uniqueFamilies": 92
+    }
+  ]
+}

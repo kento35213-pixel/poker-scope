@@ -1,0 +1,2 @@
+importScripts('engine.js?v=2','study.js?v=2');
+self.onmessage=function(e){let {id,type,payload}=e.data;try{let result;if(type==='equity')result=Poker.equityFixed(payload.hands,payload.board,payload.trials,p=>self.postMessage({id,progress:p}));else if(type==='analyze')result=Poker.analyze(payload,p=>self.postMessage({id,progress:p}));else throw Error('不明な計算です。');self.postMessage({id,result});}catch(err){self.postMessage({id,error:err.message});}};

@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "seed": 20261026,
+  "note": "標準練習の出題前履歴を検査するための抽選。実戦のGTO行動頻度ではありません。",
+  "modes": [
+    {
+      "mode": "cash",
+      "samples": 10000,
+      "limpHistories": 32,
+      "nonSbLimpHistories": 0,
+      "coldCallHistories": 440,
+      "chainsOf2ColdCallers": 0,
+      "exceptionThemes": 32
+    },
+    {
+      "mode": "mtt",
+      "samples": 10000,
+      "limpHistories": 46,
+      "nonSbLimpHistories": 0,
+      "coldCallHistories": 1149,
+      "chainsOf2ColdCallers": 0,
+      "exceptionThemes": 298
+    }
+  ]
+}

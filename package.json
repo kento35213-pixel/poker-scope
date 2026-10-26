@@ -1,0 +1,21 @@
+{
+  "name": "poker-scope",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Japanese poker study trainer with cash/MTT quizzes, spot analysis and equity calculator",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "node scripts/check-assets.cjs",
+    "test": "node --test tests/engine.test.cjs tests/study.test.cjs tests/app.test.cjs",
+    "check": "npm run build && node --check dist/engine.js && node --check dist/study.js && node --check dist/app.js && node --check dist/worker.js",
+    "deploy": "wrangler deploy",
+    "deploy:check": "wrangler deploy --dry-run",
+    "sample": "node tests/sample-curriculum.cjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
